@@ -37,7 +37,7 @@ class StudentRegistrationFormTest extends TestBase {
             softly.assertThat(resultTable.picture).isEqualTo(registrationData.pictureName);
             softly.assertThat(resultTable.address).isEqualTo(registrationData.currentAddress);
             softly.assertThat(resultTable.stateAndCity)
-                    .isEqualTo(registrationData.state + " " + registrationData.city);
+                    .isEqualTo(registrationData.state.getState() + " " + registrationData.city);
             softly.assertAll();
         });
     }
