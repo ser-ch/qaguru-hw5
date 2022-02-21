@@ -1,6 +1,7 @@
 package qa.demo.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import qa.demo.data.RegistrationFormData;
 import qa.demo.data.RegistrationResultTable;
 import qa.demo.data.enums.Gender;
@@ -34,11 +35,13 @@ public class RegistrationPage {
     private SelenideElement resultSubmitFormTitle = $("#example-modal-sizes-title-lg");
     private SelenideElement resultTable = $(".table-responsive");
 
+    @Step("открыть страницу заполнения формы")
     public RegistrationPage openPage() {
         open(URL);
         return this;
     }
 
+    @Step("проверяем, что страница открыта")
     public RegistrationPage assertOnRegistrationPage() {
         formTitle.shouldHave(text(FORM_TITLE));
         return this;
@@ -103,13 +106,13 @@ public class RegistrationPage {
 
     public RegistrationPage setState(State state) {
         $("#state").click();
-        $("#stateCity-wrapper").$(byText(state.getState())).click();
+        $("#stateCity-wrapper").$(byText(state.getState())).scrollIntoView(true).click();
         return this;
     }
 
     public RegistrationPage setCity(City city) {
         $("#city").click();
-        $("#stateCity-wrapper").$(byText(city.getCity())).click();
+        $("#stateCity-wrapper").$(byText(city.getCity())).scrollIntoView(true).click();
         return this;
     }
 
@@ -121,10 +124,12 @@ public class RegistrationPage {
         return this;
     }
 
+    @Step("Отправить форму")
     public void submitForm() {
-        $("#submit").click();
+        $("#submit").scrollTo().click();
     }
 
+    @Step("Заполнение формы")
     public RegistrationPage fillForm(RegistrationFormData registrationFormData) {
         if (registrationFormData.getFirstName() != null) setFirstName(registrationFormData.getFirstName());
         if (registrationFormData.getLastName() != null) setLastName(registrationFormData.getLastName());
