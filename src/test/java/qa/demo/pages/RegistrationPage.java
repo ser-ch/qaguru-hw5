@@ -34,6 +34,7 @@ public class RegistrationPage {
     private SelenideElement phoneNumberInput = $("#userNumber");
     private SelenideElement resultSubmitFormTitle = $("#example-modal-sizes-title-lg");
     private SelenideElement resultTable = $(".table-responsive");
+    private SelenideElement closeFixedBan = $("#close-fixedban");
 
     @Step("открыть страницу заполнения формы")
     public RegistrationPage openPage() {
@@ -105,12 +106,14 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setState(State state) {
+        closeFixedBan.click();
         $("#state").click();
         $("#stateCity-wrapper").$(byText(state.getState())).scrollIntoView(true).click();
         return this;
     }
 
     public RegistrationPage setCity(City city) {
+        closeFixedBan.click();
         $("#city").click();
         $("#stateCity-wrapper").$(byText(city.getCity())).scrollIntoView(true).click();
         return this;
