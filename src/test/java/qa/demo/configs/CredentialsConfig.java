@@ -6,7 +6,4 @@ import org.aeonbits.owner.Config;
 public interface CredentialsConfig extends Config {
     String user();
     String password();
-
-    @DefaultValue("selenoid.autotests.cloud/wd/hub/")
-    String selenoidUrl();
 }
