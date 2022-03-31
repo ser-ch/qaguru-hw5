@@ -106,14 +106,14 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setState(State state) {
-        closeFixedBan.click();
+        if (closeFixedBan.isDisplayed()) closeFixedBan.click();
         $("#state").click();
         $("#stateCity-wrapper").$(byText(state.getState())).scrollIntoView(true).click();
         return this;
     }
 
     public RegistrationPage setCity(City city) {
-        closeFixedBan.click();
+        if (closeFixedBan.isDisplayed()) closeFixedBan.click();
         $("#city").click();
         $("#stateCity-wrapper").$(byText(city.getCity())).scrollIntoView(true).click();
         return this;
